@@ -2,7 +2,7 @@
   <v-app>
     <NavBar />
     <v-main>
-      <RouterView />
+      <RouterView :key="$route.fullPath" />
     </v-main>
 
     <AppFooter />
