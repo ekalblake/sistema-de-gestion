@@ -104,7 +104,6 @@
   >
     Petición realizada con éxito
   </v-snackbar>
-  <v-snackbar> </v-snackbar>
 </template>
 <script setup>
 import { ref, onMounted, watch, reactive } from "vue";
@@ -159,16 +158,18 @@ const setCurrentView = (course) => {
 };
 
 const newCourse = async () => {
-  console.log(courseObject);
   if (isNew.value == true) {
     //Crear
-    const { data } = await createCourse(courseObject);
+    await createCourse(courseObject);
   } else {
-    const { data } = await updateCourse(currentCourse.value.id, courseObject);
+    //Editar
+    await updateCourse(currentCourse.value.id, courseObject);
   }
 
   isActive.value = true;
   dialogCourse.value = false;
+
+  getCourses();
 
   setTimeout(() => {
     isActive.value = false;
