@@ -4,8 +4,6 @@
     <v-main>
       <RouterView :key="$route.fullPath" />
     </v-main>
-
-    <AppFooter />
   </v-app>
 </template>
 
